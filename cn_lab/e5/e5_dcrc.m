@@ -12,7 +12,7 @@ for i = lg:1:ltm
     if (txm(1) == g(1))
         txm1 = bin2dec(txm);
         g1 = bin2dec(g);
-        rem1 = dec2bin(bitxor(txm1,g1),g);
+        rem1 = dec2bin(bitxor(txm1,g1),lg);
     end
 
     if i == ltm
@@ -34,6 +34,6 @@ else
     dy = input('If you want to retransmit press y, else n','s');
 
     if dy == 'y'
-        DCRC()
+        DCRC
     end
 end

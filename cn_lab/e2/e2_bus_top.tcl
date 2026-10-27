@@ -8,7 +8,7 @@ $ns namtrace-all $nf
 set tf [open bus.tr w]
 $ns trace-all $tf
 
-proc finish{}{
+proc finish {} {
     global ns nf tf
     $ns flush-trace
     close $nf
@@ -26,7 +26,7 @@ set n4 [$ns node]
 set lan0 [$ns newLan "$n0 $n1 $n2 $n3 $n4" 1.5Mb 40ms LL Queue/DropTail MAC/CSMA/Cd channel]
 
 set tcp0 [new Agent/TCP]
-$tcp0 set fid_1
+$tcp0 set fid_ 1
 $ns attach-agent $n1 $tcp0
 
 set sink0 [new Agent/TCPSink]
@@ -35,18 +35,18 @@ $ns connect $tcp0 $sink0
 
 set ftp3 [new Application/FTP]
 $ftp3 attach-agent $tcp0
-$ftp3 set type_FTP
+$ftp3 set type_ FTP
 
 set udp4 [new Agent/UDP]
 $ns attach-agent $n2 $udp4
 set null3 [new Agent/Null]
 $ns attach-agent $n4 $null3
 $ns connect $udp4 $null3
-$udp4 set fid_2
+$udp4 set fid_ 2
 
 set cbr1 [new Application/Traffic/CBR]
-$cbr1 set packetSize_1050
-$cbr1 set interval_0.005
+$cbr1 set packetSize_ 1050
+$cbr1 set interval_ 0.005
 $cbr1 attach-agent $udp4
 
 $ns at 0.5 "$ftp3 start"

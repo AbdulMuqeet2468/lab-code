@@ -8,7 +8,7 @@ $ns namtrace-all $nf
 
 $ns color 1 violet
 
-proc finish{}{
+proc finish {} {
     global ns tf nf
     $ns flush-trace
     close $tf 
@@ -32,9 +32,9 @@ $ns duplex-link-op $n0 $n1 color chocolate
 $ns duplex-link-op $n0 $n1 label "link-n"
 
 set tcp0 [new Agent/TCP]
-$tcp0 set window_1
+$tcp0 set window_ 1
 $ns attach-agent $n0 $tcp0
-$tcp0 set fid_1
+$tcp0 set fid_ 1
 
 set ftp0 [new Application/FTP]
 $ftp0 attach-agent $tcp0 

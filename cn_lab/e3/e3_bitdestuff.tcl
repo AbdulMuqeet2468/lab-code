@@ -7,23 +7,23 @@ set count 0
 set i 0
 set len [string length $bits]
 
-while {$i < $len}{
+while {$i < $len} {
     set b [string index $bits $i]
-    if {$b ne "0" && $b ne "1"}{
+    if {$b ne "0" && $b ne "1"} {
         puts "Error: Invalid character '$b'. Only '0' and '1' allowed."
         exit 1
     }
 
     append out $b
-    if {$b eq "1"}{
+    if {$b eq "1"} {
         incr count
-        if {$count == 5}{
+        if {$count == 5} {
             incr i
-            if {$i < $len}{
+            if {$i < $len} {
                 set nextBit [string index $bits $i]
-                if {$nextBit ne "0"}{
+                if {$nextBit ne "0"} {
                     append out $nextBit
-                    if {$nextBit eq "1"0}{
+                    if {$nextBit eq "1"0} {
                         set count 1
                     } else {
                         set count 0

@@ -2,19 +2,23 @@ clc; clear all; close all;
 
 m = input('Enter message:','s');
 g = input('Enter pattern:','s');
+
 lm = length(m);
 lg = length(g);
 
-t = strcat(m, dec2bin(0,(g-1)));
+t = strcat(m, repmat('0',1,lg-1));
 lt = length(t);
+
 xm = t(1:lg);
 rem1 = '';
 
-for i = lg:1:lt
-    if (xm(1) == g(1))
+for i = lg:lt
+    if xm(1) == '1'
         xm1 = bin2dec(xm);
         g1 = bin2dec(g);
         rem1 = dec2bin(bitxor(xm1,g1),lg);
+    else
+        rem1 = xm;
     end
 
     if i == lt
@@ -27,6 +31,7 @@ for i = lg:1:lt
 end
 
 tm = strcat(m,rem1);
+
 disp('The final remainder is:');
 disp(rem1);
-disp(['frame to be transmitted is' , tm]);
+disp(['Frame to be transmitted is ',tm]);

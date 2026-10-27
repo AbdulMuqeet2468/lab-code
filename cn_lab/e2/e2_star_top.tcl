@@ -8,7 +8,7 @@ $ns trace-all $tf
 
 $ns color 1 orange
 
-proc finish{}{
+proc finish {} {
     global ns nf tf
     $ns flush-trace
     close $nf
@@ -17,7 +17,7 @@ proc finish{}{
     exit 0
 }
 
-for {set i 0}{$i < 6}{incr i 1}{
+for {set i 0} {$i < 6} {incr i 1} {
     set n($i) [$ns node]
 }
 
@@ -25,12 +25,12 @@ $n(0) shape square
 $n(0) color Magenta
 $n(0) label Hub
 
-for {set i 1}{$i < 6}{incr i 1}{
+for {set i 1} {$i < 6} {incr i 1} {
     $ns duplex-link $n(0) $n($i) 1Mb 10ms DropTail
 }
 
 set tcp0 [new Agent/TCP]
-$tcp0 set class_1
+$tcp0 set class_ 1
 $ns attach-agent $n(1) $tcp0
 
 set sink0 [new Agent/TCPSink]
@@ -38,8 +38,8 @@ $ns attach-agent $n(3) $sink0
 $ns connect $tcp0 $sink0
 
 set cbr0 [new Application/Traffic/CBR]
-$cbr0 set packetSize_500
-$cbr0 set interval_0.01
+$cbr0 set packetSize_ 500
+$cbr0 set interval_ 0.01
 $cbr0 attach-agent $tcp0
 
 $ns rtmodel-at 1.5 down $n(0)
